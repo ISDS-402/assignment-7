@@ -8,6 +8,13 @@ SELECT ProductNumber, COUNT(ProductNumber) AS 'Instances of Products'
 FROM LINE_ITEM
 GROUP BY ProductNumber;
 
+/* 3 */
+SELECT LastName, FirstName, COUNT(ContactType) AS NumberofContacts
+FROM CUSTOMER, CONTACT
+WHERE CUSTOMER.CustomerID = CONTACT.CustomerID
+AND City = 'Dallas'
+GROUP BY LastName, FirstName;
+
 /* 4*/
 
 /* List first name, last name, and phone number for customers who purchased the video companion titled 
