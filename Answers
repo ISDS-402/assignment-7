@@ -32,10 +32,33 @@ WHERE CustomerId IN
 			(SELECT ProductNumber
 			FROM PRODUCT
 			WHERE ProductDescription LIKE 'Kitchen Remodeling Basics')));
+			
+/* 5 */
+
+/* List the number of invoices for each email address where the payment is made
+using Mastercard and the total invoice amount is less than $100.00*/
+
+SELECT EmailAddress, COUNT(*) AS 'NumberOfInvoices' 
+FROM CUSTOMER AS C JOIN INVOICE AS I
+	ON C.CustomerID = I.CustomerID
+WHERE PaymentType  = 'MasterCard'
+AND Total < 100
+GROUP BY EmailAddress;
+
+/* 6 */
+
+/* Use the previous SQL statement to show all records regardless of payment type or amount
+with 2 or more invoices.*/
+
+SELECT EmailAddress, COUNT(*) AS 'NumberOfInvoices' 
+FROM CUSTOMER AS C JOIN INVOICE AS I
+	ON C.CustomerID = I.CustomerID
+GROUP BY EmailAddress
+HAVING COUNT(*) >= 2;
 
 /* 7 */
-Verify that the total listed in line item is accurate and correct by creating a calculated field
-and displaying it next to the original total
+/* Verify that the total listed in line item is accurate and correct by creating a calculated field
+and displaying it next to the original total */
 
 SELECT Total, (Quantity*UnitPrice) AS TotalCheck
 FROM LINE_ITEM
