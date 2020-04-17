@@ -1,7 +1,11 @@
+/* 1 */
+
 /*List the various product numbers only once in the line item table*/
 
 SELECT DISTINCT ProductNumber
 FROM LINE_ITEM;
+
+/* 2 */
 
 /* List the number of products ordered in line item by product nuumber*/
 SELECT ProductNumber, COUNT(ProductNumber) AS 'Instances of Products'
@@ -9,6 +13,7 @@ FROM LINE_ITEM
 GROUP BY ProductNumber;
 
 /* 3 */
+
 SELECT LastName, FirstName, COUNT(ContactType) AS NumberofContacts
 FROM CUSTOMER, CONTACT
 WHERE CUSTOMER.CustomerID = CONTACT.CustomerID
@@ -57,6 +62,7 @@ GROUP BY EmailAddress
 HAVING COUNT(*) >= 2;
 
 /* 7 */
+
 /* Verify that the total listed in line item is accurate and correct by creating a calculated field
 and displaying it next to the original total */
 
@@ -64,6 +70,7 @@ SELECT Total, (Quantity*UnitPrice) AS TotalCheck
 FROM LINE_ITEM
 
 /* 8 */
+
 /* Use previous SQL statement and modify it to show grand totals by invoice */
 
 SELECT InvoiceNumber, SUM(SubTotal + Shipping + Tax) AS GrandTotal
@@ -71,7 +78,8 @@ FROM INVOICE
 GROUP BY InvoiceNumber;
 
 
-/*9*/
+/* 9 */
+
 /* List the total number of transactions by payment type 
 greater than 8.*/ 
 
