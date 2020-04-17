@@ -1,7 +1,7 @@
-List the various product numbers only once in the line item table
+/*List the various product numbers only once in the line item table*/
 
 SELECT DISTINCT ProductNumber
-FROM LINE_ITEM
+FROM LINE_ITEM;
 
 /* List the number of products ordered in line item by product nuumber*/
 SELECT ProductNumber,COUNT(ProductNumber)
