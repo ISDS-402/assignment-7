@@ -70,3 +70,13 @@ SELECT InvoiceNumber, SUM(SubTotal + Shipping + Tax) AS GrandTotal
 FROM INVOICE
 GROUP BY InvoiceNumber;
 
+
+/*9*/
+/* List the total number of transactions by payment type 
+greater than 8.*/ 
+
+SELECT COUNT(*) AS 'NumberOfTransactions', PaymentType
+FROM INVOICE AS I JOIN LINE_ITEM AS L
+	ON I.InvoiceNumber = L.InvoiceNumber
+GROUP BY PaymentType
+
