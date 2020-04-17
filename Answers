@@ -7,3 +7,21 @@ FROM LINE_ITEM;
 SELECT ProductNumber, COUNT(ProductNumber) AS 'Instances of Products'
 FROM LINE_ITEM
 GROUP BY ProductNumber;
+
+/* 4*/
+
+/* List first name, last name, and phone number for customers who purchased the video companion titled 
+'Kitchen Remodeling Basics' Use a subquery*/
+
+SELECT FirstName, LastName, Phone
+FROM CUSTOMER
+WHERE CustomerId IN
+	(SELECT CustomerID
+	FROM INVOICE
+	WHERE InvoiceNumber IN
+		(SELECT InvoiceNumber
+		FROM LINE_ITEM
+		WHERE ProductNumber IN
+			(SELECT ProductNumber
+			FROM PRODUCT
+			WHERE ProductDescription LIKE 'Kitchen Remodeling Basics')));
