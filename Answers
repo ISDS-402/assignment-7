@@ -4,6 +4,6 @@ SELECT DISTINCT ProductNumber
 FROM LINE_ITEM;
 
 /* List the number of products ordered in line item by product nuumber*/
-SELECT ProductNumber,COUNT(ProductNumber)
+SELECT ProductNumber, COUNT(ProductNumber) AS 'Instances of Products'
 FROM LINE_ITEM
 GROUP BY ProductNumber;
