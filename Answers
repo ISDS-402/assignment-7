@@ -1,0 +1,4 @@
+List the various product numbers only once in the line item table
+
+SELECT DISTINCT ProductNumber
+FROM LINE_ITEM
