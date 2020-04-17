@@ -88,3 +88,10 @@ FROM INVOICE AS I JOIN LINE_ITEM AS L
 	ON I.InvoiceNumber = L.InvoiceNumber
 GROUP BY PaymentType;
 
+/* 10  */
+
+SELECT LastName, FirstName, SUM(SubTotal + Shipping + Tax) AS GrandTotal
+FROM INVOICE, CUSTOMER
+WHERE INVOICE.CustomerID = CUSTOMER.CustomerID
+AND PaymentType = 'VISA'
+GROUP BY LastName, FirstName;
