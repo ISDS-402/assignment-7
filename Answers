@@ -32,3 +32,10 @@ WHERE CustomerId IN
 			(SELECT ProductNumber
 			FROM PRODUCT
 			WHERE ProductDescription LIKE 'Kitchen Remodeling Basics')));
+
+/* 7 */
+Verify that the total listed in line item is accurate and correct by creating a calculated field
+and displaying it next to the original total
+
+SELECT Total, (Quantity*UnitPrice) AS TotalCheck
+FROM LINE_ITEM
